@@ -1,18 +1,13 @@
-package fp.utiles;
+package fp.universidad.tipos.test;
 
 import java.time.LocalDate;
+
+import fp.universidad.tipos.Persona;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Asignatura a = new Asignatura("Fundamentos de Programación",
-		                "0000230",
-		                6.0,
-		                TipoAsignatura.ANUAL,
-		                1
-		        );
-
-		        System.out.println(a);
+		
 		 Persona p1 = new Persona(
 		                "28864657W",
 		                "Pascual",

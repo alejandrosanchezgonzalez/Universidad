@@ -1,4 +1,4 @@
-package fp.utiles;
+package fp.universidad.tipos;
 
 public class Espacio {
 	private TipoEspacio tipo;
