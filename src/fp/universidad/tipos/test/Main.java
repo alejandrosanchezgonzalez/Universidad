@@ -1,6 +1,7 @@
 package fp.universidad.tipos.test;
 
 import java.time.LocalDate;
+import fp.universidad.tipos.*;
 
 import fp.universidad.tipos.Persona;
 
