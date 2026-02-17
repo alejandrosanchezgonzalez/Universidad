@@ -32,9 +32,15 @@ public class Main {
 
 		        System.out.println(p1);
 		        System.out.println(p2);
-		    }
+		    
+	Espacio aula = new Espacio(TipoEspacio.AULA_TEORIA, "A3.10", 30, 3);
+    System.out.println(aula);         
+    System.out.println(aula.getTipo());
+    
+	}
+}
 		
- }
+
 	
 	
 		
