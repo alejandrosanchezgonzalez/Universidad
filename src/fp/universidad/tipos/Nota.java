@@ -1,4 +1,5 @@
 package fp.universidad.tipos;
+import fp.utiles.Checkers;
 
 public record Nota(
         Asignatura asignatura,
@@ -11,21 +12,15 @@ public record Nota(
 
     // Constructor con mención de honor
     public Nota {
-        if (asignatura == null) {
-            throw new IllegalArgumentException("La asignatura no puede ser nula");
-        }
+    	
+    	Checkers.checkNoNull(asignatura);
+        Checkers.checkNoNull(convocatoria);
+        Checkers.check("el valor debe estar entre 0 y 10",valor >= 0 && valor <= 10);
+        Checkers.check("Solo puede haber mención de honor si la nota es mayor o igual a 9", !mencionHonor || valor >= 9);
 
-        if (convocatoria == null) {
-            throw new IllegalArgumentException("La convocatoria no puede ser nula");
-        }
+        
 
-        if (valor < 0 || valor > 10) {
-            throw new IllegalArgumentException("El valor debe estar entre 0 y 10");
-        }
-
-        if (mencionHonor && valor < 9) {
-            throw new IllegalArgumentException("Solo puede haber mención de honor si la nota es >= 9");
-        }
+       
 
         calificacion = calcularCalificacion(valor, mencionHonor);
     }

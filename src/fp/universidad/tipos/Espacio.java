@@ -1,5 +1,5 @@
 package fp.universidad.tipos;
-
+import fp.utiles.Checkers;
 public class Espacio {
 	private TipoEspacio tipo;
 	private String nombre;
@@ -11,6 +11,9 @@ public class Espacio {
 		this.nombre=nombre;
 		this.capacidad=capacidad;
 		this.planta=planta;
+		
+		Checkers.check("La capacidad debe ser mayor que 0",capacidad > 0);
+		
 	}
 
 	public TipoEspacio getTipo() {

@@ -2,6 +2,8 @@ package fp.universidad.tipos;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import fp.utiles.Checkers;
+
 
 public class Persona {
 	private String dni;
@@ -19,6 +21,10 @@ public class Persona {
 		this.email=email;
 		this.edad=edad;
 		
+		Checkers.check(" El DNI tiene que tener 8 dígitos y una letra", DniCorrecto(dni));
+		Checkers.check("el email debe contener @ o ser vacio", email.isEmpty() || EmailCorrecto(email));
+
+		
 	}
 	
 	public Persona(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, int edad) {
@@ -29,6 +35,8 @@ public class Persona {
 		this.email="";
 		this.edad=edad;
 		
+		Checkers.check(" El DNI tiene que tener 8 dígitos y una letra", DniCorrecto(dni));
+		Checkers.check("el email debe contener @ o ser vacio", email.isEmpty() || EmailCorrecto(email));
 	}
 
 	public String getDni() {
@@ -80,6 +88,24 @@ public class Persona {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+	
+	public static boolean EmailCorrecto(String email) {
+		if (email.contains("@")) {
+			return true;
+		}
+		return false;
+		}
+	public static boolean DniCorrecto(String dni) {
+		if (dni!=null) {
+			if(dni.matches("\\d{8}[A-Za-z]")) {
+				return true;
+			}else {
+				return false;
+			}
+	}
+		return false;
+}	
+
 
 	public String toString() {
 

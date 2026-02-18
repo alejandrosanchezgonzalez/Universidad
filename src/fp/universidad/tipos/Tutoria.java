@@ -1,7 +1,10 @@
 package fp.universidad.tipos;
 import java.time.DayOfWeek;
+import fp.utiles.Checkers;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+
+import fp.utiles.Checkers;
 
 public record Tutoria(
         DayOfWeek dia_de_la_semana,
@@ -17,6 +20,9 @@ public Tutoria(DayOfWeek dia_de_la_semana,
  this(dia_de_la_semana,
       hora_inicio,
       hora_inicio.plusMinutes(duracion_min));
+ Checkers.checkNoNull(dia_de_la_semana,hora_inicio,hora_fin);
+ Checkers.check("la tutoria debe durar al menos 15 minutos", ChronoUnit.MINUTES.between(hora_inicio, hora_fin) >= 15);
+ Checkers.check("La tutoria solo puede ser de lunes a viernes",dia_de_la_semana!=DayOfWeek.SATURDAY && dia_de_la_semana!=DayOfWeek.SUNDAY);
 }
 	
 	public long duracion() {
