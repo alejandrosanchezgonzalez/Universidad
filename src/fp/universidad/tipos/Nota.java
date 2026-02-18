@@ -13,8 +13,7 @@ public record Nota(
     // Constructor con mención de honor
     public Nota {
     	
-    	Checkers.checkNoNull(asignatura);
-        Checkers.checkNoNull(convocatoria);
+    	Checkers.checkNoNull(asignatura,convocatoria);
         Checkers.check("el valor debe estar entre 0 y 10",valor >= 0 && valor <= 10);
         Checkers.check("Solo puede haber mención de honor si la nota es mayor o igual a 9", !mencionHonor || valor >= 9);
 
@@ -32,6 +31,8 @@ public record Nota(
                 double valor) {
 
         this(asignatura, anioInicioCurso, convocatoria, valor, false, null);
+        
+        
     }
 
     private static Calificacion calcularCalificacion(double valor, boolean mencionHonor) {
