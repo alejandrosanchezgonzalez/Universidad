@@ -2,13 +2,13 @@ package fp.universidad.tipos;
 import fp.utiles.Checkers;
 import fp.utiles.Validators;
 
-public record Asignatura(
+public record Asignatura (
         String nombre,
         String codigo,
         double creditos,
         TipoAsignatura tipo,
         int curso
-) {
+)implements Comparable<Asignatura> {
 	//El código numérico de una **asignatura** consta de 7 dígitos (por ejemplo, `"0000230"`). El número de créditos es
 	//siempre mayor que cero y su curso debe tener en cuenta que los grados constan de 4 años.
 
@@ -25,7 +25,21 @@ public record Asignatura(
         //TODO calcular el acrónimo a partir de las mayúsculas del nombre
         return null;
     }
-
+//COMPARE TO
+    @Override
+    public int compareTo(Asignatura o) {
+    	return this.codigo.compareTo(o.codigo);
+    }
+//EQUALS
+    @Override
+    public boolean equals(Object o) {
+    	return (o instanceof Asignatura a) && codigo.equals(a.codigo);
+    }
+//HASHCODE
+    @Override
+    public int hashCode() {
+    	return codigo.hashCode();
+    }
     @Override
     public String toString() {
         return "(" + codigo + ") " + nombre;

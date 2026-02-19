@@ -43,7 +43,7 @@ public class Espacio {
 	public int getPlanta() {
 		return planta;
 	}
-	
+	@Override
 	public String toString() {
         return nombre + " (planta " + planta + ")";
     }

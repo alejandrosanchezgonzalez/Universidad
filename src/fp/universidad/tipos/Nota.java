@@ -55,7 +55,7 @@ public record Nota(
         return anioInicioCurso + "-" + ultimosDos;
     }
 
-    
+    @Override
     public String toString() {
         return asignatura + ", "
                 + cursoAcademico() + ", "

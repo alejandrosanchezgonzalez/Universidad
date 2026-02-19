@@ -106,7 +106,7 @@ public class Persona {
 		return false;
 }	
 
-
+@Override
 	public String toString() {
 
 	    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");

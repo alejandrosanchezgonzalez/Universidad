@@ -29,6 +29,7 @@ public Tutoria(DayOfWeek dia_de_la_semana,
 		return ChronoUnit.MINUTES.between(hora_inicio,hora_fin);
 	}
 	
+	@Override
 	public String toString() {
 		return letraDia(dia_de_la_semana) +" "+ hora_inicio + "-" + hora_fin;
 	}
