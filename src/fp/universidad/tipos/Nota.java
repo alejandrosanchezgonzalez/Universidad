@@ -1,14 +1,16 @@
 package fp.universidad.tipos;
+import java.util.Objects;
+
 import fp.utiles.Checkers;
 
-public record Nota(
+public record Nota (
         Asignatura asignatura,
         int anioInicioCurso,
         Convocatoria convocatoria,
         double valor,
         boolean mencionHonor,
         Calificacion calificacion
-) {
+) implements Comparable<Nota>{
 
     // Constructor con mención de honor
     public Nota {
@@ -63,5 +65,36 @@ public record Nota(
                 + valor + ", "
                 + calificacion;
     }
+    
+    @Override
+	public boolean equals(Object obj) {
+		if (this==obj) return true;
+		if (obj==null || getClass() != obj.getClass())return false;
+		Nota otra=(Nota) obj;
+		return Objects.equals(asignatura,otra.asignatura) &&
+				Objects.equals(convocatoria, otra.convocatoria)&&
+				Objects.equals(anioInicioCurso,otra.anioInicioCurso);
+				
+	}
+@Override
+	public int hashCode() {
+		return Objects.hash(asignatura,convocatoria,anioInicioCurso);
+	}
+
+@Override
+public  int compareTo(Nota otra) {
+		int comparacion=Integer.compare(this.anioInicioCurso,otra.anioInicioCurso);
+		if (comparacion!=0) return comparacion;
+		
+		comparacion=this.asignatura.compareTo(otra.asignatura);
+		if (comparacion!=0) return comparacion;
+		
+		
+		return this.convocatoria.compareTo(otra.convocatoria);
+		
+		
+		
+		
+	}
 }
 

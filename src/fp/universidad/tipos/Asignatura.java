@@ -1,6 +1,6 @@
 package fp.universidad.tipos;
 import fp.utiles.Checkers;
-import fp.utiles.Validators;
+
 
 public record Asignatura (
         String nombre,

@@ -3,14 +3,14 @@ import java.time.DayOfWeek;
 import fp.utiles.Checkers;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
-import fp.utiles.Checkers;
 
 public record Tutoria(
         DayOfWeek dia_de_la_semana,
         LocalTime hora_inicio,
         LocalTime hora_fin
-) {
+) implements Comparable<Tutoria> {
 
 
 //  día + hora_inicio + duración
@@ -45,5 +45,32 @@ public Tutoria(DayOfWeek dia_de_la_semana,
     };
     
 	}
+	
+	 @Override
+		public boolean equals(Object obj) {
+			if (this==obj) return true;
+			if (obj==null || getClass() != obj.getClass())return false;
+			Tutoria otra=(Tutoria) obj;
+			return Objects.equals(dia_de_la_semana,otra.dia_de_la_semana) &&
+				   Objects.equals(hora_inicio,otra.hora_inicio);
+					
+		}
+	@Override
+		public int hashCode() {
+			return Objects.hash(dia_de_la_semana,hora_inicio);
+		}
+
+	@Override
+	public  int compareTo(Tutoria otra) {
+			int comparacion=this.dia_de_la_semana.compareTo(otra.dia_de_la_semana);
+			if (comparacion!=0) return comparacion;
+			
+			
+			return this.hora_inicio.compareTo(otra.hora_inicio);
+			
+			
+			
+			
+		}
 }
 

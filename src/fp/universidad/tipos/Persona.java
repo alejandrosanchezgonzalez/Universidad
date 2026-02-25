@@ -1,11 +1,12 @@
 package fp.universidad.tipos;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.time.format.DateTimeFormatter;
 
 import fp.utiles.Checkers;
 
 
-public class Persona {
+public class Persona implements Comparable<Persona> {
 	private String dni;
 	private String nombre;
 	private String apellidos;
@@ -115,8 +116,40 @@ public class Persona {
 	           apellidos + ", " +
 	           nombre + " – " +
 	           fechaNacimiento.format(formato);
+	   
 	}
+@Override
+	public boolean equals(Object obj) {
+		if (this==obj) return true;
+		if (obj==null || getClass() != obj.getClass())return false;
+		Persona otra=(Persona) obj;
+		return Objects.equals(dni,otra.dni) &&
+				Objects.equals(nombre, otra.nombre) &&
+				Objects.equals(apellidos, otra.apellidos);
+	}
+@Override
+	public int hashCode() {
+		return Objects.hash(dni,nombre,apellidos);
+	}
+@Override
+	public int compareTo(Persona otra) {
+		int comparacion=this.apellidos.compareTo(otra.apellidos);
+		if (comparacion!=0) return comparacion;
+		
+		comparacion= this.nombre.compareTo(otra.nombre);
+		if (comparacion!=0) return comparacion;
+		
+		return this.dni.compareTo(otra.dni);
+		
+		
+	}
+
+		 
+		
+}
+
+
 
 	
 
-}
+
