@@ -14,13 +14,12 @@ public class Persona implements Comparable<Persona> {
 	private String email;
 	private int edad;
 	
-	public Persona(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String email, int edad) {
+	public Persona(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String email) {
 		this.dni=dni;
 		this.nombre=nombre;
 		this.apellidos=apellidos;
 		this.fechaNacimiento=fechaNacimiento;
 		this.email=email;
-		this.edad=edad;
 		
 		Checkers.check(" El DNI tiene que tener 8 dígitos y una letra", DniCorrecto(dni));
 		Checkers.check("el email debe contener @ o ser vacio", email.isEmpty() || EmailCorrecto(email));

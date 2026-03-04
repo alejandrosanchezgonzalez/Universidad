@@ -1,7 +1,5 @@
 package fp.universidad.tipos;
 import java.util.Set;
-import fp.universidad.tipos.Asignatura;
-
 import fp.utiles.Checkers;
 
 import java.util.HashSet;
