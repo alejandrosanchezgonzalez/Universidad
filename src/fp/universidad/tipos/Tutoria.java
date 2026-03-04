@@ -14,17 +14,26 @@ public record Tutoria(
 
 
 //  día + hora_inicio + duración
-public Tutoria(DayOfWeek dia_de_la_semana,
-            LocalTime hora_inicio,
-            int duracion_min) {
- this(dia_de_la_semana,
-      hora_inicio,
-      hora_inicio.plusMinutes(duracion_min));
- Checkers.checkNoNull(dia_de_la_semana,hora_inicio,hora_fin);
- Checkers.check("la tutoria debe durar al menos 15 minutos", ChronoUnit.MINUTES.between(hora_inicio, hora_fin) >= 15);
- Checkers.check("La tutoria solo puede ser de lunes a viernes",dia_de_la_semana!=DayOfWeek.SATURDAY && dia_de_la_semana!=DayOfWeek.SUNDAY);
-}
-	
+	public Tutoria {
+ 
+			Checkers.checkNoNull(dia_de_la_semana,hora_inicio,hora_fin);
+				Checkers.check("la tutoria debe durar al menos 15 minutos", ChronoUnit.MINUTES.between(hora_inicio, hora_fin) >= 15);
+					Checkers.check("La tutoria solo puede ser de lunes a viernes",dia_de_la_semana!=DayOfWeek.SATURDAY && dia_de_la_semana!=DayOfWeek.SUNDAY);
+
+	}
+
+	public Tutoria(DayOfWeek dia_de_la_semana,LocalTime hora_inicio,Integer duracionMinutos) {
+							
+
+						this(dia_de_la_semana,
+								hora_inicio,
+								hora_inicio.plusMinutes(duracionMinutos));
+
+
+	}
+
+
+
 	public long duracion() {
 		return ChronoUnit.MINUTES.between(hora_inicio,hora_fin);
 	}
