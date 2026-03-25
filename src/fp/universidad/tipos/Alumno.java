@@ -16,6 +16,8 @@ public class Alumno extends Persona{
 		this.asignaturas= new HashSet<Asignatura>();
 		this.expediente = new Expediente();
 		}
+	
+	
 
 	public Set<Asignatura> getAsignaturas() {
 		return asignaturas;
