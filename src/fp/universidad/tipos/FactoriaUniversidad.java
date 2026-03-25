@@ -56,6 +56,39 @@ public class FactoriaUniversidad {
 		}
 		return alumnos;
 	}
+	
+	//public static Asignatura creaAsignatura() {
+		
+	//}
+	
+	public static Nota creaNota(String notaStr) {
+		String[] trozos=notaStr.split(",");
+		
+		Asignatura a =creaAsignatura(trozos[0].strip());
+		Integer cursoAcademico= Integer.parseInt(trozos[1].strip());
+		Convocatoria convocatoria= Convocatoria.valueOf(trozos[2].strip());
+		Double nota= Double.parseDouble(trozos[3].strip());
+		Boolean mencionHonor=Boolean.parseBoolean(trozos[4].strip());
+		
+		return new Nota(a,cursoAcademico,convocatoria,nota,mencionHonor);
+		
+	}
+	
+	public static List<Nota> leeNotas(String rutaFichero) {
+		
+		List<String> lineas =Ficheros.leeFichero("error de lectura", rutaFichero);
+		List<Nota> notas = new ArrayList<>();
+		
+		for (String linea:lineas) {
+			if(linea!=null && !linea.trim().isEmpty()) {
+				notas.add(creaNota(linea));
+			}
+		}
+		return notas;
+	}
+	
+		
+	
 
 
 }
