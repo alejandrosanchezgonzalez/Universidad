@@ -1,6 +1,8 @@
 package fp.universidad.tipos;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.Map;
+import java.util.HashMap;
 
 import fp.utiles.Checkers;
 import java.time.DayOfWeek;
@@ -15,6 +17,7 @@ public class Profesor extends Persona{
 	
 	private TipoCategoria categoria;
 	private SortedSet<Tutoria> tutorias;
+	private Map<Asignatura,Double> mapa;
 	
 	public Profesor(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String email, TipoCategoria categoria) {
 		super(dni, nombre, apellidos, fechaNacimiento,email);
@@ -22,6 +25,7 @@ public class Profesor extends Persona{
 		Checkers.check("un profesor debe tener 18 o mas años", super.getEdad()>=18);
 		this.tutorias= new TreeSet<>();
 		this.categoria=categoria;
+		this.mapa=new HashMap<>();
 		
 		
 
