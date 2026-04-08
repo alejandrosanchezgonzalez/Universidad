@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -55,17 +56,22 @@ public class Profesor extends Persona{
 		this.tutorias = tutorias;
 	}
 	
-	public void nuevaTutoria(LocalTime horaInicio, Integer duracionMinutos, DayOfWeek dia_de_la_semana) {
-        tutorias.add.(new Tutoria(horaInicio, duracionMinutos, dia_de_la_semana));
+	public void nuevaTutoria( DayOfWeek dia_de_la_semana,LocalTime horaInicio, Integer duracionMinutos) {
+        tutorias.add(new Tutoria( dia_de_la_semana,horaInicio, duracionMinutos));
     }
 
-    public void borraTutoria(LocalTime horaInicio, DayOfWeek dia_de_la_semana) {
-        tutorias.remove(new Tutoria(horaInicio, 0, dia_de_la_semana));
+    public void borraTutoria( DayOfWeek dia_de_la_semana,LocalTime horaInicio) {
+        tutorias.remove(new Tutoria( dia_de_la_semana,horaInicio, 0));
     }
 
     public void borraTutorias() {
         tutorias.clear();
     }
+    
+    public List getAsignaturas() {
+    	
+    }
+    
     
     public void setFechaNacimiento(LocalDate fecha) {
     	Checkers.check("un proifesor debe ser mayor de edad", getEdad()>=18);
