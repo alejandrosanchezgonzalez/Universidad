@@ -2,6 +2,7 @@ package fp.universidad.tipos;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import fp.utiles.Checkers;
@@ -68,9 +69,15 @@ public class Profesor extends Persona{
         tutorias.clear();
     }
     
-    public List getAsignaturas() {
-    	
+    public List<Asignatura> getAsignaturas() {
+        return new ArrayList<>(this.mapa.keySet());
     }
+    
+    public List<Double> getCreditos() {
+        return new ArrayList<>(this.mapa.values());
+    }
+    
+    
     
     
     public void setFechaNacimiento(LocalDate fecha) {
