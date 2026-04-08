@@ -1,6 +1,7 @@
 package fp.universidad.tipos;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.SortedMap;
 
 import fp.utiles.Checkers;
 
@@ -51,6 +52,19 @@ public class Centro implements Comparable<Centro>{
 	
 	public void eliminarEspacio(Espacio e) {
 		espacios.remove(e);
+		
+	}
+	
+	
+	public SortedMap<String,Despacho> getDespachosPorProfesor(){
+		SortedMap<String, Despacho> res =new TreeMap<String, Despacho>();
+		for(Despacho d: this.getDespachos()) {
+			for(Profesor p:d.getProfesores()) {
+				res.put(p.toString(),d);
+			}
+		}
+		return res;
+	
 		
 	}
 	
