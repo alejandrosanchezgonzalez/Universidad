@@ -70,13 +70,42 @@ public class Profesor extends Persona{
     }
     
     public List<Asignatura> getAsignaturas() {
-        return new ArrayList<>(this.mapa.keySet());
+        return new ArrayList<Asignatura>(mapa.keySet());
     }
     
     public List<Double> getCreditos() {
-        return new ArrayList<>(this.mapa.values());
+        return new ArrayList<Double>(mapa.values());
     }
     
+    public void imparteAsignatura(Asignatura a, Double credito) {
+    	Checkers.check("dale mas corason",a.creditos()<=credito);
+    	Checkers.check("mmm",this.getDedicacionTotal()+ credito <=24);
+    	mapa.put(a, credito);
+    	
+    	
+    }
+    
+    public void eliminaAsignatura(Asignatura a) {
+    	mapa.remove(a);
+    	
+    }
+    
+    public Double dedicacionAsignatura(Asignatura a) {
+    	Double r=0.0;
+    	if (mapa.keySet().contains(a))
+    		 r=mapa.get(a);
+    	return r;
+    	
+    }
+    
+    public Double getDedicacionTotal() {
+    	Double suma=0.0;
+    	for(Double creditos:mapa.values()) {
+    		suma+=creditos;
+    	}
+    	return suma;
+    	
+    }
     
     
     
